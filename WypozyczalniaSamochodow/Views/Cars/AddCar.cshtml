@@ -1,0 +1,38 @@
+﻿@using WypozyczalniaSamochodow.Services
+@model WypozyczalniaSamochodow.Models.Cars.CarModel
+@inject ICarService _carService
+@{
+    ViewData["Title"] = "Dodaj samochód";
+}
+
+<form method="post" asp-controller="Cars" asp-action="AddCar">
+    <div class="form-group">
+        <label for="title">Nazwa samochodu</label>
+        <input asp-for="Car" class="form-control" type="text" id="car" placeholder="Nazwa Samochodu" name="car" />
+        <span asp-validation-for="Car" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="description">Model samochodu</label>
+        <input asp-for="Model" class="form-control" type="text" id="model" placeholder="Model samochodu" name="model" />
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="category">Silnik</label>
+        <input asp-for="Engine" class="form-control" type="text" id="engine" placeholder="Silnik" name="engine" />
+        <span asp-validation-for="Engine" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="author">Typ nadwozia</label>
+        <input asp-for="BodyType" class="form-control" type="text" id="bodyType" placeholder="Typ nadwozia" name="bodyType" />
+        <span asp-validation-for="BodyType" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="pages">Rok produkcji</label>
+        <input asp-for="ProductionYear" class="form-control" type="number" id="productionYear" placeholder="Rok produkcji" name="productionYear" />
+        <span asp-validation-for="ProductionYear" class="text-danger"></span>
+    </div>
+    <div class="text-center m-5">
+        <a asp-action="Index" class="btn btn-outline-danger"><i class="fa-solid fa-arrow-left me-1"></i>Cofnij</a>
+        <button type="submit" class="btn btn-success"><i class="fa-solid fa-plus me-1"></i>Dodaj samochód</button>
+    </div>
+</form>

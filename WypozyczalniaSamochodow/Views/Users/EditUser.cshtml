@@ -1,0 +1,37 @@
+﻿@model WypozyczalniaSamochodow.Models.Users.EditUserViewModel
+@{
+    ViewData["Title"] = "Edytuj osobe";
+}
+
+<form method="post" asp-controller="Users" asp-action="EditThisUser">
+    <div class="form-group">
+        <label for="id">Id</label>
+        <input asp-for="Id" class="form-control" type="text" id="id" placeholder="Id" name="id" readonly />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="firstName">Imie</label>
+        <input asp-for="FirstName" class="form-control" type="text" id="firstName" placeholder="Imie" name="firstName" value="@Model.FirstName" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Nazwisko</label>
+        <input asp-for="LastName" class="form-control" type="text" id="lastName" placeholder="Nazwisko" name="lastName" value="@Model.LastName" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input asp-for="Email" class="form-control" type="text" id="email" placeholder="Email" name="email" value="@Model.Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="phone">Numer Telefonu</label>
+        <input asp-for="Phone" class="form-control" type="text" id="phone" placeholder="Numer Telefonu" name="phone" value="@Model.Phone" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+    <div class="text-center m-5">
+        <a asp-action="Index" class="btn btn-outline-danger"><i class="fa-solid fa-arrow-left me-1"></i>Cofnij</a>
+        <button type="submit" class="btn btn-success"><i class="fa-solid fa-pen me-2"></i>Edytuj dane</button>
+    </div>
+</form>

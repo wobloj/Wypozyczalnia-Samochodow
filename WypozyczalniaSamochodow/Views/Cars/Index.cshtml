@@ -1,0 +1,60 @@
+﻿@model WypozyczalniaSamochodow.Models.Cars.CarViewModel
+@{
+    ViewData["Title"] = "Samochody";
+}
+
+@if (Model.Cars.Any())
+{
+    <div class="text-center m-3 text-center">
+        <h1 class="display-3">Lista samochodów</h1>
+        <a class="btn btn-primary p-3" asp-controller="Cars" asp-action="AddCar"><i class="fa-solid fa-plus me-3"></i>Dodaj nowy samochód</a>
+    </div>
+    <table class="table table-hover">
+        <thead class="text-center">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nazwa samochodu</th>
+                <th scope="col">Model samochodu</th>
+                <th scope="col">Silnik</th>
+                <th scope="col">Typ nadwozia</th>
+                <th scope="col">Rok produkcji</th>
+            </tr>
+        </thead>
+        <tbody class="text-center ">
+            @foreach (var item in Model.Cars)
+            {
+                <tr>
+                    <th>@item.Id</th>
+                    <th>@item.Car</th>
+                    <th>@item.Model</th>
+                    <th>@item.Engine</th>
+                    <th>@item.BodyType</th>
+                    <th>@item.ProductionYear</th>
+                    <th>
+                        <div class="d-flex gap-1 justify-content-center">
+                            <form class=" float-left" method="post" asp-action="RemoveCar" asp-route-id="@item.Id">
+                                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash me-2"></i>Usuń</button>
+                            </form>
+                            <a class="btn btn-warning float-right" asp-controller="Cars" asp-action="EditCar"
+                               asp-route-id="@item.Id"
+                               asp-route-car="@item.Car"
+                               asp-route-model="@item.Model"
+                               asp-route-engine="@item.Engine"
+                               asp-route-bodyType="@item.BodyType"
+                               asp-route-productionYear="@item.ProductionYear">
+                                <i class="fa-solid fa-pen me-2"></i>Edytuj
+                            </a>
+                        </div>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="text-center">
+        <p class="display-4">Dodaj Samochód</p>
+        <a class="btn btn-primary" asp-controller="Cars" asp-action="AddCar"><i class="fa-solid fa-plus me-1"></i>Dodaj</a>
+    </div>
+}
